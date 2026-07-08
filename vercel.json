@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.shantynachon.com"
+        }
+      ],
+      "destination": "https://shantynachon.com/$1",
+      "permanent": true
+    }
+  ]
+}
