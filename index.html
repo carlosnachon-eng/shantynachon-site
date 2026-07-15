@@ -236,6 +236,96 @@
     .section-title em { font-style: italic; color: var(--rose); }
     .section-sub { margin-top: .8rem; color: var(--muted); font-size: .92rem; line-height: 1.7; max-width: 52ch; }
 
+    /* ── NECESIDADES ── */
+    .needs { background:#fff; padding:5.5rem 4vw; }
+    .needs-grid {
+      display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr));
+      gap:1rem; margin-top:3rem;
+    }
+    .need-card {
+      background:var(--cream); border:1px solid rgba(201,121,122,.12);
+      border-radius:1.4rem; padding:1.7rem; text-decoration:none;
+      transition:transform .22s, box-shadow .22s, border-color .22s;
+      display:flex; flex-direction:column; min-height:190px;
+    }
+    .need-card:hover {
+      transform:translateY(-4px); box-shadow:0 16px 42px rgba(46,26,26,.08);
+      border-color:rgba(201,121,122,.28);
+    }
+    .need-kicker {
+      font-size:.62rem; letter-spacing:.16em; text-transform:uppercase;
+      color:var(--rose); margin-bottom:.8rem;
+    }
+    .need-title {
+      font-family:'Cormorant Garamond', serif; font-size:1.35rem;
+      line-height:1.15; color:var(--deep); margin-bottom:.65rem;
+    }
+    .need-copy { color:var(--muted); font-size:.82rem; line-height:1.65; }
+    .need-link {
+      margin-top:auto; padding-top:1rem; color:var(--rose);
+      font-size:.72rem; letter-spacing:.1em; text-transform:uppercase;
+    }
+
+    /* ── SERVICIOS ── */
+    .service-overview { background:var(--cream); padding:5.5rem 4vw; }
+    .service-grid {
+      display:grid; grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:1.2rem; margin-top:3rem;
+    }
+    .service-card {
+      background:#fff; border:1px solid rgba(201,121,122,.12);
+      border-radius:1.4rem; padding:2rem 1.7rem;
+      box-shadow:0 6px 28px rgba(46,26,26,.04);
+    }
+    .service-card.highlight {
+      border-color:rgba(196,151,90,.34);
+      background:linear-gradient(135deg,#fff 0%,#fdf7f2 100%);
+    }
+    .service-eyebrow {
+      font-size:.62rem; letter-spacing:.16em; text-transform:uppercase;
+      color:var(--rose); margin-bottom:.75rem;
+    }
+    .service-name {
+      font-family:'Cormorant Garamond', serif; color:var(--deep);
+      font-size:1.45rem; line-height:1.15; margin-bottom:.7rem;
+    }
+    .service-copy { color:var(--muted); font-size:.84rem; line-height:1.7; }
+
+    /* ── CONFIANZA ── */
+    .trust { background:#fff; padding:5.5rem 4vw; }
+    .trust-inner {
+      display:grid; grid-template-columns:.9fr 1.1fr; gap:4rem;
+      align-items:start; max-width:1080px; margin:0 auto;
+    }
+    .trust-list { display:grid; gap:1rem; }
+    .trust-item {
+      border-bottom:1px solid rgba(201,121,122,.12);
+      padding-bottom:1rem;
+    }
+    .trust-item strong {
+      display:block; color:var(--deep); font-size:.92rem; margin-bottom:.25rem;
+    }
+    .trust-item span { color:var(--muted); font-size:.82rem; line-height:1.65; }
+
+    /* ── UBICACIÓN ── */
+    .location-band {
+      background:var(--deep); color:#fff; padding:3.5rem 4vw;
+    }
+    .location-inner {
+      max-width:1080px; margin:0 auto; display:flex; justify-content:space-between;
+      align-items:center; gap:2rem; flex-wrap:wrap;
+    }
+    .location-title {
+      font-family:'Cormorant Garamond', serif; font-size:1.8rem;
+      font-weight:300; line-height:1.15;
+    }
+    .location-copy { color:rgba(255,255,255,.48); font-size:.86rem; line-height:1.75; max-width:56ch; }
+    .location-tags { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:1rem; }
+    .location-tags span {
+      border:1px solid rgba(255,255,255,.12); border-radius:2rem;
+      padding:.35rem .75rem; color:rgba(255,255,255,.68); font-size:.72rem;
+    }
+
     /* ── EVENTOS ── */
     .eventos-grid {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.2rem;
@@ -348,6 +438,7 @@
     .citas-inner {
       display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; align-items: start;
     }
+    .citas-inner > * { min-width: 0; }
     .citas-left {}
     .citas-how { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1.5rem; }
     .how-step { display: flex; gap: 1.2rem; align-items: flex-start; }
@@ -478,20 +569,29 @@
 
     /* ── RESPONSIVE ── */
     @media(max-width:900px){
+      .nav-links { display:none; }
       .hero { grid-template-columns:1fr; padding:7rem 4vw 4rem; }
       .hero-image { order:-1; }
       .hero-photo-frame { max-width:280px; }
       .citas-inner { grid-template-columns:1fr; gap:3rem; }
       .galeria-grid { grid-template-columns:repeat(2,1fr); grid-template-rows:auto; }
       .galeria-item.featured { grid-column:span 2; }
+      .service-grid { grid-template-columns:1fr 1fr; }
+      .trust-inner { grid-template-columns:1fr; gap:2.5rem; }
     }
     @media(max-width:600px){
-      .nav-links { display:none; }
       nav { padding:1rem 4vw; }
+      .hero-float-card { left:.25rem; max-width:calc(100% - .5rem); }
+      .hero-float-card2 { right:.25rem; }
       .form-grid { grid-template-columns:1fr; }
       .form-group.full { grid-column:span 1; }
       .footer-top { flex-direction:column; }
       .ig-strip { flex-direction:column; text-align:center; }
+      .needs, .service-overview, .trust { padding:4.5rem 4vw; }
+      .service-grid { grid-template-columns:1fr; }
+      .need-card, .service-card { border-radius:1.1rem; }
+      .location-inner { align-items:flex-start; }
+      .citas-left > p[style*="inline-flex"] { max-width:100%; flex-wrap:wrap; border-radius:1rem; }
     }
   </style>
 
@@ -517,7 +617,7 @@
     <picture><source srcset="/assets/logo-nav.avif" type="image/avif"><source srcset="/assets/logo-nav.webp" type="image/webp"><img src="/assets/logo-nav.webp" alt="Shanty Nachón Stylist" style="height:48px;width:auto;display:block;" decoding="async"/></picture>
   </a>
   <ul class="nav-links">
-    <li><a href="#eventos">Eventos</a></li>
+    <li><a href="#servicios">Servicios</a></li>
     <li><a href="#tratamientos">Tratamientos</a></li>
     <li><a href="#cursos">Cursos</a></li>
     <li><a href="#galeria">Galería</a></li>
@@ -538,21 +638,21 @@
       <em>en Puebla</em><br>
       <strong>para eventos sociales</strong>
     </h1>
-    <p class="hero-sub">Maquillaje social y peinados profesionales para bodas, XV años, graduaciones y eventos especiales. Servicio en Ciudad Judicial, Angelópolis, Cholula, Puebla y Atlixco, con tratamientos capilares y cursos de automaquillaje.<br><span style="display:inline-flex;align-items:center;gap:.4rem;margin-top:.6rem;font-size:.78rem;color:var(--rose);letter-spacing:.06em;">📍 Angelópolis · Cholula · Atlixco</span></p>
+    <p class="hero-sub">Belleza profesional para los momentos en los que quieres verte cuidada, segura y fiel a tu estilo: maquillaje social, peinados, novias, color, tratamientos capilares y cursos personalizados.<br><span style="display:inline-flex;align-items:center;gap:.4rem;margin-top:.6rem;font-size:.78rem;color:var(--rose);letter-spacing:.06em;">📍 Ciudad Judicial · Angelópolis · Cholula · Atlixco</span></p>
     <div class="hero-pills">
       <span class="pill">💍 Novias</span>
-      <span class="pill">🌸 XV Años</span>
-      <span class="pill">🎓 Graduaciones</span>
-      <span class="pill">✝️ Comuniones</span>
+      <span class="pill">✨ Maquillaje social</span>
+      <span class="pill">〰️ Peinados</span>
+      <span class="pill">🎨 Color & balayage</span>
+      <span class="pill">💆 Botox capilar</span>
       <span class="pill">📚 Cursos</span>
-      <span class="pill">📍 Cd. Judicial</span>
     </div>
     <div class="hero-actions">
       <a href="#citas" class="btn-primary">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
         Quiero mi cita
       </a>
-      <a href="#cursos" class="btn-secondary">Ver cursos</a>
+      <a href="#servicios" class="btn-secondary">Ver servicios</a>
     </div>
   </div>
 
@@ -575,6 +675,112 @@
 </section>
 
 <div class="ornament">· · ✦ · ·</div>
+
+<!-- ── NECESIDADES ── -->
+<section class="needs" id="momentos">
+  <div class="section-header reveal">
+    <span class="section-tag">Elige por momento</span>
+    <h2 class="section-title">¿Qué estás <em>buscando hoy?</em></h2>
+    <p class="section-sub">Cada cita parte de una intención distinta: un evento, una boda, un cambio de imagen, un cabello más cuidado o aprender a arreglarte con seguridad.</p>
+  </div>
+  <div class="needs-grid">
+    <a class="need-card reveal" href="#citas">
+      <div class="need-kicker">Evento especial</div>
+      <div class="need-title">Quiero verme impecable para una fecha importante</div>
+      <p class="need-copy">Maquillaje social y peinado pensados para fotografía, duración y comodidad durante todo tu evento.</p>
+      <span class="need-link">Solicitar fecha</span>
+    </a>
+    <a class="need-card reveal" href="#citas">
+      <div class="need-kicker">Novias</div>
+      <div class="need-title">Quiero llegar tranquila al día de mi boda</div>
+      <p class="need-copy">Acompañamiento para definir un look que se sienta tuyo, dure y te permita disfrutar sin preocuparte por el espejo.</p>
+      <span class="need-link">Consultar disponibilidad</span>
+    </a>
+    <a class="need-card reveal" href="#tratamientos">
+      <div class="need-kicker">Cabello</div>
+      <div class="need-title">Quiero transformar o cuidar mi cabello</div>
+      <p class="need-copy">Color, balayage, hidratación y botox capilar con enfoque en brillo, salud y un acabado favorecedor.</p>
+      <span class="need-link">Ver tratamientos</span>
+    </a>
+    <a class="need-card reveal" href="#cursos">
+      <div class="need-kicker">Aprendizaje</div>
+      <div class="need-title">Quiero aprender a arreglarme mejor</div>
+      <p class="need-copy">Cursos personalizados para maquillarte o peinarte con técnica, orden y productos adecuados para ti.</p>
+      <span class="need-link">Ver cursos</span>
+    </a>
+  </div>
+</section>
+
+<!-- ── SERVICIOS PRINCIPALES ── -->
+<section class="service-overview" id="servicios">
+  <div class="section-header reveal">
+    <span class="section-tag">Servicios especializados</span>
+    <h2 class="section-title">Belleza para <em>momentos importantes</em></h2>
+    <p class="section-sub">La propuesta de Shanty reúne maquillaje, peinado, cuidado capilar e imagen personal en una experiencia cercana, ordenada y pensada para cada clienta.</p>
+  </div>
+  <div class="service-grid">
+    <div class="service-card highlight reveal">
+      <div class="service-eyebrow">Eventos y fotografía</div>
+      <div class="service-name">Maquillaje social</div>
+      <p class="service-copy">Piel cuidada, mirada definida y acabado favorecedor para bodas, graduaciones, cenas, sesiones y celebraciones.</p>
+    </div>
+    <div class="service-card highlight reveal">
+      <div class="service-eyebrow">Acabado completo</div>
+      <div class="service-name">Peinados profesionales</div>
+      <p class="service-copy">Ondas, recogidos, semi recogidos y estilos elaborados con atención a tu rostro, vestido, horario y tipo de evento.</p>
+    </div>
+    <div class="service-card highlight reveal">
+      <div class="service-eyebrow">Acompañamiento especial</div>
+      <div class="service-name">Novias</div>
+      <p class="service-copy">Un look nupcial que busca tranquilidad: que te reconozcas, te sientas segura y puedas vivir tu día sin dudas.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-eyebrow">Cambio de imagen</div>
+      <div class="service-name">Color y balayage</div>
+      <p class="service-copy">Diseño de color para iluminar el rostro, suavizar facciones y crear un cambio visible sin perder naturalidad.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-eyebrow">Cuidado capilar</div>
+      <div class="service-name">Botox capilar e hidratación</div>
+      <p class="service-copy">Tratamientos para recuperar suavidad, brillo y manejo cuando el cabello necesita una pausa y cuidado profundo.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-eyebrow">Imagen personal</div>
+      <div class="service-name">Cursos personalizados</div>
+      <p class="service-copy">Automaquillaje y autopeinado con guía directa para que aprendas a resolver tu arreglo con seguridad.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONFIANZA ── -->
+<section class="trust" id="experiencia">
+  <div class="trust-inner">
+    <div class="section-header reveal" style="margin-bottom:0;">
+      <span class="section-tag">Por qué elegir a Shanty</span>
+      <h2 class="section-title">Una cita pensada <em>para ti</em></h2>
+      <p class="section-sub">La diferencia está en el cuidado del proceso: escuchar lo que buscas, ajustar el resultado a tu estilo y acompañarte con claridad desde el primer mensaje.</p>
+      <a href="#citas" class="btn-primary" style="margin-top:1.6rem;">Cuéntame qué necesitas</a>
+    </div>
+    <div class="trust-list reveal">
+      <div class="trust-item">
+        <strong>Atención directa y personalizada</strong>
+        <span>Tu solicitud la revisa Shanty personalmente para confirmar servicio, fecha, horario y detalles importantes.</span>
+      </div>
+      <div class="trust-item">
+        <strong>Más de 10 años de experiencia</strong>
+        <span>Trabajo constante con eventos sociales, novias, peinados, tratamientos y cursos en Puebla y alrededores.</span>
+      </div>
+      <div class="trust-item">
+        <strong>Resultados pensados para verse bien en persona y en foto</strong>
+        <span>El look se plantea según tu evento, iluminación, vestido, duración y nivel de comodidad.</span>
+      </div>
+      <div class="trust-item">
+        <strong>Proceso claro antes de apartar</strong>
+        <span>Primero se revisa disponibilidad y necesidades; después se confirma la cita con anticipo.</span>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ── TABLA DE PRECIOS ── -->
 <section style="background:#fff;padding:4rem 4vw;">
@@ -674,39 +880,6 @@
       </div>
     </div>
 
-  </div>
-</section>
-
-<!-- ── EVENTOS SOCIALES ── -->
-<section class="section" id="eventos">
-  <div class="section-header reveal">
-    <span class="section-tag">Para tu gran día</span>
-    <h2 class="section-title">Eventos <em>sociales</em></h2>
-    <p class="section-sub">Cada evento es único y tú mereces verte exactamente como lo soñaste. Me especializo en peinados y maquillaje para los momentos que no se repiten.</p>
-  </div>
-  <div class="eventos-grid">
-    <div class="evento-card reveal">
-      <span class="evento-emoji">💍</span>
-      <div class="evento-name">Novias</div>
-      <div class="evento-desc">Peinado y maquillaje nupcial para el día más importante de tu vida. Prueba incluida.</div>
-    </div>
-    <div class="evento-card reveal">
-      <span class="evento-emoji">🌸</span>
-      <div class="evento-name">XV Años</div>
-      <div class="evento-desc">Look de princesa para tu gran celebración. Desde clásico hasta moderno, tú decides.</div>
-    </div>
-    <div class="evento-card reveal">
-      <span class="evento-emoji">🎓</span>
-      <div class="evento-name">Graduaciones</div>
-      <div class="evento-desc">El final de una etapa merece el look perfecto. Elegante, juvenil y que dure toda la noche.</div>
-    </div>
-    <div class="evento-card reveal">
-      <span class="evento-emoji">✝️</span>
-      <div class="evento-name">Primera Comunión</div>
-      <div class="evento-desc">Peinados delicados y especiales para niñas. Con paciencia, amor y atención al detalle.</div>
-    </div>
-    
-    
   </div>
 </section>
 
@@ -818,6 +991,61 @@
   </p>
 </section>
 
+<!-- ── TESTIMONIOS ── -->
+<section class="testimonios">
+  <div class="section-header reveal">
+    <span class="section-tag">Reseñas reales de Google</span>
+    <h2 class="section-title">Confianza que <em>se nota</em></h2>
+    <p class="section-sub">Shanty Nachón Stylist cuenta con 5.0 estrellas en Google, basado en 30 opiniones de clientas que destacan su trato, técnica y constancia.</p>
+  </div>
+  <div class="test-grid">
+    <div class="test-card reveal">
+      <div class="test-quote">"</div>
+      <p class="test-text">Muy amable siempre, trabaja súper padre, siempre se actualiza y va a la vanguardia en cuanto a estilos y productos. Bastante recomendable!</p>
+      <div class="test-author">
+        <div>
+          <div class="test-name">Brenda Aurora</div>
+          <div class="test-event">Google · técnica y actualización</div>
+        </div>
+        <div class="test-stars">★★★★★</div>
+      </div>
+    </div>
+    <div class="test-card reveal">
+      <div class="test-quote">"</div>
+      <p class="test-text">Excelente atención y muy buen trabajo. Siempre me siento cómoda y satisfecha con el resultado. Shanty es profesional y amable.</p>
+      <div class="test-author">
+        <div>
+          <div class="test-name">Linda Kbrera</div>
+          <div class="test-event">Google · atención personalizada</div>
+        </div>
+        <div class="test-stars">★★★★★</div>
+      </div>
+    </div>
+    <div class="test-card reveal">
+      <div class="test-quote">"</div>
+      <p class="test-text">Me encanta su trabajo, desde hace nueve años nadie más corta mi cabello y siempre queda hermoso. Además tiene muchos servicios y en todos los que he probado siempre me deja perfecta.</p>
+      <div class="test-author">
+        <div>
+          <div class="test-name">Daniela Cervantes</div>
+          <div class="test-event">Google · cabello y servicios</div>
+        </div>
+        <div class="test-stars">★★★★★</div>
+      </div>
+    </div>
+    <div class="test-card reveal">
+      <div class="test-quote">"</div>
+      <p class="test-text">Super profesional, me encanta los diferentes efectos de color que ha hecho en mi cabello y los tratamientos capilares muy recomendables.</p>
+      <div class="test-author">
+        <div>
+          <div class="test-name">Nadia Ruiz</div>
+          <div class="test-event">Google · color y tratamientos</div>
+        </div>
+        <div class="test-stars">★★★★★</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ── CITAS ── -->
 <section class="citas" id="citas">
   <div class="citas-inner">
@@ -858,15 +1086,15 @@
         <div class="form-title">Tu <em>solicitud de cita</em></div>
         <div class="form-grid">
           <div class="form-group">
-            <label>Tu nombre</label>
+            <label for="f-nombre">Tu nombre</label>
             <input type="text" id="f-nombre" placeholder="¿Cómo te llamas?"/>
           </div>
           <div class="form-group">
-            <label>Tu WhatsApp</label>
+            <label for="f-tel">Tu WhatsApp</label>
             <input type="tel" id="f-tel" placeholder="222 000 0000"/>
           </div>
           <div class="form-group full">
-            <label>Servicio que deseas</label>
+            <label for="f-servicio">Servicio que deseas</label>
             <select id="f-servicio">
               <option value="">— ¿Qué necesitas? —</option>
               <optgroup label="🎉 Eventos Sociales">
@@ -878,6 +1106,7 @@
                 <option>Sesión de fotos</option>
               </optgroup>
               <optgroup label="💆 Tratamientos Capilares">
+                <option>Color o balayage</option>
                 <option>Alaciado semipermanente</option>
                 <option>Botox capilar</option>
                 <option>Tratamiento de hidratación</option>
@@ -890,68 +1119,44 @@
             </select>
           </div>
           <div class="form-group">
-            <label>Fecha preferida</label>
+            <label for="f-fecha">Fecha preferida</label>
             <input type="date" id="f-fecha"/>
           </div>
           <div class="form-group">
-            <label>Hora aproximada</label>
+            <label for="f-hora">Hora aproximada</label>
             <input type="time" id="f-hora"/>
           </div>
           <div class="form-group full">
-            <label>Cuéntame más</label>
-            <textarea id="f-notas" placeholder="Tipo de evento, si necesitas prueba previa, referencias de look, preguntas sobre algún curso…"></textarea>
+            <label for="f-notas">Cuéntame qué tienes en mente</label>
+            <textarea id="f-notas" placeholder="Tipo de evento, lugar, horario, referencias de look, estado de tu cabello o cualquier detalle que quieras cuidar."></textarea>
           </div>
         </div>
-        <p class="form-note">Tu solicitud llega por WhatsApp y Shanty la confirma personalmente.</p>
+        <p class="form-note">Shanty revisa personalmente cada solicitud y te responde por WhatsApp para confirmar disponibilidad antes de apartar.</p>
         <button class="btn-wa" onclick="enviarWA()">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.532 5.862L.054 23.998l6.305-1.654A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.006-1.373l-.36-.214-3.737.98 1-3.647-.234-.374A9.808 9.808 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
-          Enviar solicitud por WhatsApp
+          Enviar mi solicitud a Shanty
         </button>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── TESTIMONIOS ── -->
-<section class="testimonios">
-  <div class="section-header reveal">
-    <span class="section-tag">Lo que dicen</span>
-    <h2 class="section-title">Clientas que <em>regresan</em></h2>
-  </div>
-  <div class="test-grid">
-    <div class="test-card reveal">
-      <div class="test-quote">"</div>
-      <p class="test-text">Shanty me hizo el peinado y maquillaje para mi boda y quedé exactamente como lo soñé. Muy profesional, paciente y con un talento increíble.</p>
-      <div class="test-author">
-        <div>
-          <div class="test-name">Mariana G.</div>
-          <div class="test-event">Novia · 2024</div>
-        </div>
-        <div class="test-stars">★★★★★</div>
+<!-- ── UBICACIÓN ── -->
+<section class="location-band" id="ubicacion">
+  <div class="location-inner">
+    <div>
+      <div class="location-title">Atención en Puebla y zonas cercanas</div>
+      <p class="location-copy">Citas en el espacio de Shanty en Ciudad Judicial y servicio a domicilio para eventos, sujeto a disponibilidad y zona.</p>
+      <div class="location-tags">
+        <span>Ciudad Judicial</span>
+        <span>Angelópolis</span>
+        <span>San Andrés Cholula</span>
+        <span>San Pedro Cholula</span>
+        <span>Puebla</span>
+        <span>Atlixco</span>
       </div>
     </div>
-    <div class="test-card reveal">
-      <div class="test-quote">"</div>
-      <p class="test-text">Tomé el curso de automaquillaje y cambió mi vida. Ahora me maquillo sola para cualquier evento y la gente no lo puede creer. Vale cada peso.</p>
-      <div class="test-author">
-        <div>
-          <div class="test-name">Daniela R.</div>
-          <div class="test-event">Curso automaquillaje</div>
-        </div>
-        <div class="test-stars">★★★★★</div>
-      </div>
-    </div>
-    <div class="test-card reveal">
-      <div class="test-quote">"</div>
-      <p class="test-text">Me hizo el alaciado semipermanente y no puedo creer la diferencia. Llevo 4 meses y mi cabello sigue increíble. Definitivamente regreso.</p>
-      <div class="test-author">
-        <div>
-          <div class="test-name">Sofía M.</div>
-          <div class="test-event">Alaciado semipermanente</div>
-        </div>
-        <div class="test-stars">★★★★★</div>
-      </div>
-    </div>
+    <a href="#citas" class="btn-primary">Consultar disponibilidad</a>
   </div>
 </section>
 
@@ -976,7 +1181,7 @@
       <span class="footer-tagline" style="margin-top:3px;">+10 años · Angelópolis · Cholula · Atlixco</span>
     </div>
     <ul class="footer-links">
-      <li><a href="#eventos">Eventos sociales</a></li>
+      <li><a href="#servicios">Servicios</a></li>
       <li><a href="#tratamientos">Tratamientos capilares</a></li>
       <li><a href="#cursos">Cursos</a></li>
       <li><a href="#galeria">Galería</a></li>
