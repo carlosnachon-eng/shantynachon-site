@@ -35,6 +35,8 @@ const robots = one(html, /<meta\s+name=["']robots["']\s+content=["']([^"']*)/i, 
 const h1 = [...html.matchAll(/<h1\b[^>]*>([\s\S]*?)<\/h1>/gi)].map((match) => clean(match[1]));
 const schemas = [...html.matchAll(/<script\s+type=["']application\/ld\+json["']>([\s\S]*?)<\/script>/gi)]
   .map((match) => JSON.parse(match[1]));
+const analyticsConfigTag = html.match(/<script\s+src=["']\/analytics-config\.js["']\s+defer><\/script>/i);
+const analyticsTag = html.match(/<script\s+src=["']\/analytics\.js["']\s+defer><\/script>/i);
 
 assert(status === 200, 'La página no devuelve 200');
 assert(title === 'Maquillaje Social en Puebla | Precios y Citas | Shanty Nachón', 'Cambió el title congelado');
@@ -42,6 +44,9 @@ assert(description === 'Maquillaje social profesional en Puebla desde $1,050. Lo
 assert(canonical === 'https://shantynachon.com/maquillaje-social-puebla', 'Cambió el canonical');
 assert(robots === 'index, follow', 'Cambió robots');
 assert(h1.length === 1 && h1[0] === 'Maquillista en Puebla para maquillaje social', 'Cambió el H1 o existe más de uno');
+assert(analyticsConfigTag, 'Falta la carga diferida de analytics-config.js');
+assert(analyticsTag, 'Falta la carga diferida de analytics.js');
+assert(analyticsConfigTag.index < analyticsTag.index, 'analytics-config.js debe cargar antes que analytics.js');
 
 const schemaTypes = schemas.map((schema) => schema['@type']);
 for (const type of ['Service', 'BreadcrumbList', 'FAQPage', 'ImageObject']) {
@@ -84,5 +89,11 @@ console.log(JSON.stringify({
   schemas: schemaTypes,
   visibleFaqs: visibleFaqs.length,
   images: images.length,
+  analytics: {
+    config: '/analytics-config.js',
+    tracker: '/analytics.js',
+    order: 'config-before-tracker',
+    defer: true,
+  },
   result: 'PASS',
 }, null, 2));
